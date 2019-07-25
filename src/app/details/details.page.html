@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar color="progress">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pokemon-name">
+      {{ name }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="catchRate">
+    <ion-row>
+      <ion-col size="12" class="types">
+        <ion-badge *ngFor="let type of types" class="type" [ngClass]="type"> {{ type }} </ion-badge>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <img [src]="img" class="img">
+      </ion-col>
+      <ion-col size="8">
+        <p class="pokemon-description">{{ description }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Vida: {{ hp }}</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="hp / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Ataque: {{ attack }}</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="attack / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Defensa: {{ defense }}</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="defense / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Max Ataque: {{ specialAttack }}</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="specialAttack / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Max Defensa: {{ specialDefense }}</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="specialDefense / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Tasa de captura: {{ catchRate }}%</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="catchRate / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <h6 class="pokemon-stats">Genero: {{ generRatioFemale }}% Hembra</h6>
+                <ion-progress-bar color="progress" class="pokemon-stats-progress-bar" [value]="generRatioFemale / 100">
+                </ion-progress-bar>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="info">
+      <ion-col size="12">
+        <h4>Estatura: {{ height }} m</h4>
+      </ion-col>
+      <ion-col size="12">
+        <h4>Peso: {{ weight }} kg</h4>
+      </ion-col>
+      <ion-col size="12">
+        <h4>Grupo de Huevos: {{ eggGroups.join(', ') }}</h4>
+      </ion-col>
+      <ion-col size="12">
+        <h4>Habilidades: {{ abilities.join(', ') }}</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-card>
+    <ion-card-header class="header">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="5">
+            <h3 class="pokemon-name">{{ name }}</h3>
+          </ion-col>
+          <ion-col size="7" class="types">
+            <ion-badge *ngFor="let type of types" class="type" [ngClass]="type"> {{ type }} </ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img [src]="img" class="img">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content class="content">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <div>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Vida</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ hp }}
+                    <ion-progress-bar color="primary" [value]="hp / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Ataque</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ attack }}
+                    <ion-progress-bar color="primary" [value]="attack / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Defensa</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ defense }}
+                    <ion-progress-bar color="primary" [value]="defense / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Max Ataque</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ specialAttack }}
+                    <ion-progress-bar color="primary" [value]="specialAttack / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Max Defensa</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ specialDefense }}
+                    <ion-progress-bar color="primary" [value]="specialDefense / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Tasa de captura:</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ catchRate }} %
+                    <ion-progress-bar color="primary" [value]="catchRate / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="4">
+                    <h6>Genero:</h6>
+                  </ion-col>
+                  <ion-col size="8">
+                    {{ generRatioFemale }} %
+                    <ion-progress-bar color="primary" [value]="generRatioFemale / 100"></ion-progress-bar>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <p>{{ description }}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <h3>Información</h3>
+          </ion-col>
+          <ion-col size="6">
+            <h4>Estatura: {{ height }} m</h4>
+          </ion-col>
+          <ion-col size="6">
+            <h4>Peso: {{ weight }} kg</h4>
+          </ion-col>
+          <ion-col size="6">
+            <h4>Grupo de Huevos: {{ eggGroups.join(', ') }}</h4>
+          </ion-col>
+          <ion-col size="6">
+            <h4>Habilidades: {{ abilities.join(', ') }}</h4>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

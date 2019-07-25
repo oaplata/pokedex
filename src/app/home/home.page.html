@@ -1,14 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+  <ion-toolbar color="progress">
+    <ion-title class="title">
+      POKÉDEX
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-sm *ngFor="let pokemon of pokemons">
+        <ion-card [routerLink]="['/details', pokemon.id]">
+          <ion-card-header class="header">
+            <img [src]="pokemon.img">
+          </ion-card-header>
+          <ion-card-content class="content">
+            <h1>{{ pokemon.name }}</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
